@@ -1,20 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            document.body.classList.toggle('light-mode');
+        }
+
+        function changeButtonColor(color) {
+            document.getElementById("mainBtn").style.backgroundColor = color;
+        }
+    </script>
 </head>
-<body>
+<body class="light-mode">
     <h1>Login</h1>
     <form method="POST">
-        <label>Username:</label>
-        <input type="text" name="username" required><br><br>
-
-        <label>Password:</label>
-        <input type="password" name="password" required><br><br>
-
-        <button type="submit">Login</button>
+        <input type="text" name="username" placeholder="Username" required><br><br>
+        <input type="password" name="password" placeholder="Password" required><br><br>
+        <button id="mainBtn" type="submit">Login</button>
     </form>
-    <p>Don't have an account? <a href="/register">Register</a></p>
+    
+    <br>
+    <button onclick="toggleTheme()">🌞/🌙 Toggle Theme</button>
+    <br><br>
+    <input type="color" onchange="changeButtonColor(this.value)">
 </body>
 </html>
