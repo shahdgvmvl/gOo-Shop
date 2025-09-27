@@ -1,13 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title>gOo Shop</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script>
+        // دالة لتغيير الثيم (Light / Dark)
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            document.body.classList.toggle('light-mode');
+        }
+
+        // دالة لتغيير لون الزر
+        function changeButtonColor(color) {
+            document.getElementById("mainBtn").style.backgroundColor = color;
+        }
+    </script>
 </head>
-<body>
-    <h1>Welcome {{ session['user'] }} 👋</h1>
-    <p>This is the home page of your shop!</p>
-    <a href="/cart">Go to Cart</a> | 
-    <a href="/logout">Logout</a>
+<body class="light-mode">
+    <h1>Welcome to gOo Shop 🛒</h1>
+    <div class="container">
+        <a href="/register">Register</a> |
+        <a href="/login">Login</a> |
+        <a href="/cart">Cart</a>
+    </div>
+
+    <!-- زرار يغير الثيم -->
+    <button onclick="toggleTheme()">🌞/🌙 Toggle Theme</button>
+
+    <!-- زرار لونه يتغير -->
+    <br><br>
+    <button id="mainBtn">Main Button</button>
+    <br><br>
+    <input type="color" onchange="changeButtonColor(this.value)">
 </body>
 </html>
